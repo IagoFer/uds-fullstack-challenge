@@ -4,11 +4,11 @@ Repositório com as soluções dos três exercícios práticos da avaliação t�
 
 ## Estrutura
 
-| Pasta | Exercício | Descrição |
-|---|---|---|
-| [`/exercicio-1`](./exercicio-1) | Desenvolvimento Backend | Régua de Cobranças (NestJS + PostgreSQL) |
-| [`/exercicio-2`](./exercicio-2) | Code Review e Debugging | Análise e correção de código legado |
-| [`/exercicio-3`](./exercicio-3) | Decisão de Arquitetura | Integração multi-gateway de pagamento |
+| Pasta | Exercício | Descrição | Status |
+|---|---|---|---|
+| [`/exercicio-1`](./exercicio-1) | Desenvolvimento Backend | Régua de Cobranças (NestJS + PostgreSQL) | ✅ Concluído |
+| [`/exercicio-2`](./exercicio-2) | Code Review e Debugging | Análise e correção de código legado | 🔜 Pendente |
+| [`/exercicio-3`](./exercicio-3) | Decisão de Arquitetura | Integração multi-gateway de pagamento | ✅ Concluído |
 
 ## Stack
 

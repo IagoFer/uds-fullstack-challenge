@@ -19,4 +19,11 @@ Conforme as instruções do desafio, este documento detalha como ferramentas de 
 - **Correção de UUID**: Identifiquei que os IDs de exemplo gerados pela IA não seguiam o padrão rigoroso de versão 4 (exigido pelo `class-validator`) e corrigi os payloads de teste.
 - **ConfigModule Global**: Ajustei a configuração do `ConfigModule` para ser global (`isGlobal: true`), facilitando o acesso às variáveis de ambiente em todos os módulos sem imports repetitivos.
 
----
+## Exercício 3 — Decisão de Arquitetura
+
+### Onde a IA auxiliou:
+- **Escrita de Código**: Geração do boilerplate e estrutura das classes baseada nos padrões **Strategy** e **Adapter** que eu solicitei a implementação para agilizar o processo.
+- **Redação Técnica**: Auxílio na formatação e redação das respostas sobre resiliência (Idempotência e Reconciliação).
+
+### O que eu alterei ou decidi diferente:
+- **Refinamento de Interfaces**: Ajustei as assinaturas dos métodos nos Adapters para garantir que as particularidades de cada gateway (como valores em reais vs centavos) fossem tratadas sem "vazar" para o domínio da aplicação.
