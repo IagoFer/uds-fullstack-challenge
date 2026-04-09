@@ -104,15 +104,24 @@ export class FaturaService {
   }
 
   /**
-   * Lista faturas de um usuário.
+   * Lista faturas de um usuário com paginação.
    *
-   *Filtramos diretamente no banco via WHERE clause.
+   * Filtramos diretamente no banco via WHERE clause.
+   * A paginação evita carregar todas as faturas na memória.
    */
-  async listarPorUsuario(userId: string): Promise<Fatura[]> {
-    return this.faturaRepo.find({
+  async listarPorUsuario(
+    userId: string,
+    page: number = 1,
+    limit: number = 10,
+  ): Promise<{ items: Fatura[]; total: number; page: number; limit: number }> {
+    const [items, total] = await this.faturaRepo.findAndCount({
       where: { userId },
       relations: ['lembretes'],
       order: { createdAt: 'DESC' },
+      skip: (page - 1) * limit,
+      take: limit,
     });
+
+    return { items, total, page, limit };
   }
 }

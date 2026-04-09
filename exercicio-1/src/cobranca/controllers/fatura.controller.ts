@@ -4,6 +4,7 @@ import {
   Body,
   Get,
   Param,
+  Query,
   HttpCode,
   HttpStatus,
   NotFoundException,
@@ -22,6 +23,7 @@ import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../../auth/decorators/current-user.decorator';
 import { FaturaService } from '../services/fatura.service';
 import { CreateFaturaDto } from '../dto/create-fatura.dto';
+import { PaginacaoDto } from '../dto/paginacao.dto';
 
 /**
  * Controller de Faturas — expõe os endpoints REST do módulo de cobrança.
@@ -101,18 +103,33 @@ export class FaturaController {
   }
 
   /**
-   * Lista todas as faturas do usuário autenticado.
+   * Lista as faturas do usuário autenticado com paginação.
    */
   @Get()
   @ApiOperation({
     summary: 'Listar minhas faturas',
     description:
-      'Lista todas as faturas do usuário autenticado, ordenadas por data de criação.',
+      'Lista as faturas do usuário autenticado com paginação, ordenadas por data de criação.',
   })
-  @ApiResponse({ status: 200, description: 'Lista de faturas do usuário' })
+  @ApiResponse({ status: 200, description: 'Lista paginada de faturas do usuário' })
   @ApiResponse({ status: 401, description: 'Token JWT ausente ou inválido' })
-  async listarMinhasFaturas(@CurrentUser() user: { id: string }) {
-    const faturas = await this.faturaService.listarPorUsuario(user.id);
-    return { data: faturas, total: faturas.length };
+  async listarMinhasFaturas(
+    @CurrentUser() user: { id: string },
+    @Query() paginacao: PaginacaoDto,
+  ) {
+    const resultado = await this.faturaService.listarPorUsuario(
+      user.id,
+      paginacao.page,
+      paginacao.limit,
+    );
+    return {
+      data: resultado.items,
+      meta: {
+        total: resultado.total,
+        page: resultado.page,
+        limit: resultado.limit,
+        totalPages: Math.ceil(resultado.total / resultado.limit),
+      },
+    };
   }
 }
