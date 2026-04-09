@@ -19,10 +19,20 @@ Conforme as instruções do desafio, este documento detalha como ferramentas de 
 - **Correção de UUID**: Identifiquei que os IDs de exemplo gerados pela IA não seguiam o padrão rigoroso de versão 4 (exigido pelo `class-validator`) e corrigi os payloads de teste.
 - **ConfigModule Global**: Ajustei a configuração do `ConfigModule` para ser global (`isGlobal: true`), facilitando o acesso às variáveis de ambiente em todos os módulos sem imports repetitivos.
 
+## Exercício 2 — Code Review e Debugging
+
+### Onde a IA auxiliou:
+- **Formatação das Respostas**: Após identificar os problemas no código legado, usei a IA para organizar as respostas em um formato mais claro e estruturado.
+- **Detecção de Problema Sutil**: A IA apontou a ausência de `ORDER BY` na query, que eu não havia priorizado. Sem ordenação explícita, o PostgreSQL não garante a ordem dos resultados entre execuções, o que pode causar inconsistência na experiência do usuário.
+
+### O que eu alterei ou decidi diferente:
+- **Reescrita Completa**: Em vez de apenas corrigir os bugs pontuais, decidi reescrever o controller seguindo os mesmos padrões que já havia estabelecido no Exercício 1 (JwtAuthGuard, @CurrentUser, PaginacaoDto), garantindo consistência arquitetural entre os exercícios.
+
+
 ## Exercício 3 — Decisão de Arquitetura
 
 ### Onde a IA auxiliou:
-- **Escrita de Código**: Geração do boilerplate e estrutura das classes baseada nos padrões **Strategy** e **Adapter** que eu solicitei a implementação para agilizar o processo.
+- **Escrita de Código**: Geração do boilerplate e estrutura das classes baseada nos padrões **Strategy** e **Adapter** que eu já conhecia e solicitei a implementação para agilizar o processo.
 - **Redação Técnica**: Auxílio na formatação e redação das respostas sobre resiliência (Idempotência e Reconciliação).
 
 ### O que eu alterei ou decidi diferente:
