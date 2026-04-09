@@ -1,0 +1,48 @@
+{
+  "name": "regua-cobrancas",
+  "version": "1.0.0",
+  "description": "Módulo de Régua de Cobranças — agendamento automático de lembretes de fatura",
+  "private": true,
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/data-source.ts",
+    "typeorm:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:run": "npm run typeorm migration:run",
+    "migration:revert": "npm run typeorm migration:revert",
+    "migration:generate": "npm run typeorm migration:generate",
+    "migration:create": "npm run typeorm:create migration:create"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.3.0",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^10.3.0",
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/passport": "^10.0.3",
+    "@nestjs/platform-express": "^10.3.0",
+    "@nestjs/schedule": "^4.0.0",
+    "@nestjs/swagger": "^7.4.2",
+    "@nestjs/throttler": "^5.2.0",
+    "@nestjs/typeorm": "^10.0.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.2.1",
+    "resend": "^6.10.0",
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.3.0",
+    "@nestjs/schematics": "^10.1.0",
+    "@types/node": "^20.11.0",
+    "@types/passport-jwt": "^4.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.3"
+  }
+}
